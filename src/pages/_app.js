@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'styled-components';
 import Theme from '~/theme';
 import SiteHeader from '~/components/site-header';
-import Hero from '~/components/hero';
 import SiteFooter from '~/components/site-footer';
 import routes from '~/config/routes';
 
@@ -18,7 +17,7 @@ const App = ({ Component, pageProps }) => {
 		route: router.route,
 	};
 
-	const pageConfig = routes.filter(route => pageProps.currentPage.route === route.href)[0];
+	const pageConfig = routes.filter((route) => pageProps.currentPage.route === route.href)[0];
 	let pageTitle = '';
 	if (pageConfig) pageTitle = `${pageConfig.pageTitle} | `;
 
@@ -30,7 +29,6 @@ const App = ({ Component, pageProps }) => {
 			<ThemeProvider theme={Theme}>
 				<SiteHeader {...pageProps} />
 				<main>
-					<Hero {...pageProps} />
 					<Component {...pageProps} />
 				</main>
 				<SiteFooter {...pageProps} />
